@@ -37,7 +37,7 @@ public interface ImmutableList<T> {
      *            the element to push onto the list
      * @return a new list with e added to the beginning of the list.
      */
-    public ListNode<T> push(T e);
+    public ImmutableList<T> push(T e);
 
     /**
      * 

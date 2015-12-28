@@ -1,12 +1,13 @@
 package org.jointheleague.ecolban.immutablelist;
 
-public final class ListNode<T> implements ImmutableList<T> {
+ //This class is purposely made package private
+ final class ListNode<T> implements ImmutableList<T> {
 
     private final T head;
     private final ImmutableList<T> tail;
     private final int length;
 
-    public ListNode(T head, ImmutableList<T> tail) {
+    ListNode(T head, ImmutableList<T> tail) {
         if (tail == null) {
             throw new IllegalArgumentException("Tail cannot be null.");
         }
@@ -92,10 +93,17 @@ public final class ListNode<T> implements ImmutableList<T> {
         return sb.toString();
     }
 
-    @Override
-    public int hashCode() {
-        return 101 * (17 * head.hashCode() + tail.hashCode());
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		ImmutableList<?> lst = this;
+		while(!lst.isEmpty()){
+			result = prime * result + (lst.head() == null ? 0 : lst.head().hashCode());
+			lst = lst.tail();
+		}
+		return result;
+	}
 
     @Override
     public boolean equals(Object other) {

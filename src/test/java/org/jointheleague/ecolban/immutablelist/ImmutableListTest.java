@@ -165,5 +165,24 @@ public class ImmutableListTest extends TestCase {
     	assertFalse(lst3.equals(lst1));
     	assertTrue(lst4.equals(lst5));
     }
+    
+    @Test
+    public void testHashcode() {
+    	ImmutableList<String> lst0 = EmptyList.<String>getInstance();
+    	ImmutableList<String> lst1 = EmptyList.<String>getInstance().push(null).push(null).push(null);
+    	ImmutableList<String> lst2 = EmptyList.<String>getInstance().push("3").push("2").push("1");
+    	ImmutableList<String> lst3 = EmptyList.<String>getInstance().push("3").push("2").push("1");
+    	ImmutableList<String> lst4 = EmptyList.<String>getInstance().push("3").push("2").push("2");
+    	try {
+    		int code = lst2.hashCode();
+    		assertFalse(code == lst0.hashCode());
+    		assertFalse(code == lst1.hashCode());
+    		assertTrue(code == lst2.hashCode());
+    		assertTrue(code == lst3.hashCode());
+    		assertFalse(code == lst4.hashCode());
+    	} catch(Exception e) {
+    		fail("Exception thrown while computing hascode.");
+    	}
+    }
 
 }

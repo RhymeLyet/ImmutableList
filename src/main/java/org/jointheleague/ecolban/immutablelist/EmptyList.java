@@ -2,15 +2,14 @@ package org.jointheleague.ecolban.immutablelist;
 
 import java.util.NoSuchElementException;
 
-public class EmptyList<T> implements ImmutableList<T> {
+public final class EmptyList<T> implements ImmutableList<T> {
     
-    @SuppressWarnings("rawtypes")
-    private static EmptyList instance = new EmptyList();
+    private static EmptyList<Object> instance = new EmptyList<Object>();
     
     
-    @SuppressWarnings("rawtypes")
-    public static EmptyList getInstance() {
-        return instance;
+    @SuppressWarnings("unchecked")
+	public static <T> EmptyList<T> getInstance() {
+        return (EmptyList<T>) instance;
     }
 
     @Override

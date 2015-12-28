@@ -1,6 +1,6 @@
 package org.jointheleague.ecolban.immutablelist;
 
-public class ListNode<T> implements ImmutableList<T> {
+public final class ListNode<T> implements ImmutableList<T> {
 
     private final T head;
     private final ImmutableList<T> tail;
@@ -102,12 +102,11 @@ public class ListNode<T> implements ImmutableList<T> {
         if (other == null || !(other instanceof ListNode<?>)) {
             return false;
         }
-        @SuppressWarnings("unchecked")
-        ListNode<T> that = (ListNode<T>) other;
+		ListNode<?> that = (ListNode<?>) other;
         if (that.length != length) {
             return false;
         }
-        ImmutableList<T> lst = this;
+        ImmutableList<?> lst = this;
         boolean equalSoFar = true;
         while (!lst.isEmpty() && equalSoFar) {
             if (head == null ? head != that.head : !head.equals(that.head)) {

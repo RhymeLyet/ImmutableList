@@ -11,7 +11,6 @@ import junit.framework.TestCase;
 
 public class ImmutableListTest extends TestCase {
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testEmptyList() {
         ImmutableList<Integer> e = EmptyList.getInstance();
@@ -41,7 +40,6 @@ public class ImmutableListTest extends TestCase {
         assertTrue(e.equals(EmptyList.getInstance()));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testListNodeConstructor() {
         ImmutableList<Integer> lst1 = EmptyList.getInstance();
@@ -57,7 +55,6 @@ public class ImmutableListTest extends TestCase {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testListNodeWithInteger() {
         ImmutableList<Integer> lst0 = EmptyList.getInstance();
@@ -93,7 +90,6 @@ public class ImmutableListTest extends TestCase {
 
     @Test
     public void testListNodeWithString() {
-        @SuppressWarnings("unchecked")
         ImmutableList<String> lst0 = EmptyList.getInstance();
         ImmutableList<String> lst1 = lst0.push("two");
         ImmutableList<String> lst2 = lst1.push("one");
@@ -133,10 +129,9 @@ public class ImmutableListTest extends TestCase {
         assertSame(lst0.push("one").remove("one"), lst0);
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testListNodeWithNull() {
-        ImmutableList<Integer> lst1 = EmptyList.getInstance().push(3).push(2).push(1);
+    	ImmutableList<Integer> lst1 = EmptyList.<Integer>getInstance().push(3).push(2).push(1);
         ImmutableList<Integer> lst2 = lst1.push(null);
         ImmutableList<Integer> lst3 = lst1.push(null);
         ImmutableList<Integer> lst4 = lst1.push(0);
@@ -155,6 +150,20 @@ public class ImmutableListTest extends TestCase {
         assertTrue(lst2.tail() == lst3.remove(null));
         assertTrue(lst2.tail() == lst4.remove(0));
 
+    }
+    
+    @Test
+    public void testDifferentTypes() {
+    	ImmutableList<Object> lst1 = EmptyList.<Object>getInstance().push("3").push("2").push("1");
+    	ImmutableList<String> lst2 = EmptyList.<String>getInstance().push("3").push("2").push("1");
+    	ImmutableList<Integer> lst3 = EmptyList.<Integer>getInstance().push(3).push(2).push(1);
+    	ImmutableList<Integer> lst4 = EmptyList.<Integer>getInstance();
+    	ImmutableList<String> lst5 = EmptyList.<String>getInstance();
+    	assertTrue(lst1.equals(lst2));
+    	assertTrue(lst2.equals(lst1));
+    	assertFalse(lst1.equals(lst3));
+    	assertFalse(lst3.equals(lst1));
+    	assertTrue(lst4.equals(lst5));
     }
 
 }

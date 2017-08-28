@@ -1,4 +1,4 @@
-package org.jointheleague.ecolban.immutablelist;
+package org.jointheleague.rhymelyet.immutablelist;
 
 
 public interface ImmutableList<T> {

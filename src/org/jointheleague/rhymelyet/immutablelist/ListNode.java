@@ -1,4 +1,4 @@
-package org.jointheleague.ecolban.immutablelist;
+package org.jointheleague.rhymelyet.immutablelist;
 
  //This class is purposely made package private
  final class ListNode<T> implements ImmutableList<T> {

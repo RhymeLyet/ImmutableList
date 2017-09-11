@@ -151,7 +151,7 @@ public class ImmutableListTest extends TestCase {
 
 	@Test
 	public void testDifferentTypes() {
-		ImmutableList<Object> lst1 = EmptyList.<Object> getInstance().push("3").push("2").push("1");
+		ImmutableList<String> lst1 = EmptyList.getInstance().push("3").push("2").push("1");
 		ImmutableList<String> lst2 = EmptyList.<String> getInstance().push("3").push("2").push("1");
 		ImmutableList<Integer> lst3 = EmptyList.<Integer> getInstance().push(3).push(2).push(1);
 		ImmutableList<Integer> lst4 = EmptyList.<Integer> getInstance();

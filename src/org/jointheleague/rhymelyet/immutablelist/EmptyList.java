@@ -1,5 +1,7 @@
 package org.jointheleague.rhymelyet.immutablelist;
 
+import java.util.NoSuchElementException;
+
 public final class EmptyList<T> implements ImmutableList<T> {
 
 	private static ImmutableList instance = new EmptyList();
@@ -13,43 +15,36 @@ public final class EmptyList<T> implements ImmutableList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public int length() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public ImmutableList<T> remove(T e) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public ImmutableList<T> push(T e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ListNode<T>(e, this);
 	}
 
 	@Override
 	public ImmutableList<T> append(T e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ListNode<T>(e, this);
 	}
 
 	@Override
 	public T head() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new NoSuchElementException("The list is empty.");
 	}
 
 	@Override
 	public ImmutableList<T> tail() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new NoSuchElementException("The list is empty.");
 	}
 }

@@ -40,11 +40,16 @@ public final class EmptyList<T> implements ImmutableList<T> {
 
 	@Override
 	public T head() {
-		throw new NoSuchElementException("The list is empty.");
+		throw new NoSuchElementException("EmptyList has no head.");
 	}
 
 	@Override
 	public ImmutableList<T> tail() {
-		throw new NoSuchElementException("The list is empty.");
+		throw new NoSuchElementException("EmptyList has no tail.");
+	}
+	
+	@Override
+	public String toString() {
+		return "()";
 	}
 }

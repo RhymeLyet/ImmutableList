@@ -79,7 +79,7 @@ final class ListNode<T> implements ImmutableList<T> {
 		$ += ")";
 		return $;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,12 +101,9 @@ final class ListNode<T> implements ImmutableList<T> {
 		if (that.length != length) {
 			return false;
 		}
-		boolean $ = true;
-		for (ImmutableList<?> list1 = this, list2 = that; $ && list1.isEmpty(); list1 = list1.tail()) {
-			$ &= list1.head().equals(list2.head());
-			list2 = list2.tail();
-		}
-		return $;
+		if(head == null ? that.head() != null : !head.equals(that.head()))
+			return false;
+		return tail.equals(that.tail());
 	}
-
+	
 }
